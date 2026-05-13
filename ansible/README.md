@@ -1,8 +1,8 @@
-# Zabbix a Ansible
+# Zabbix & Ansible
 
 Small project for this event
 
-## První kroky s Ansible a Zabbix agent2 a template
+## Instalace Ansible, Zabbix agent2 a import template
 
 ![Zabbix & Ansible](./images/zbx7-ansible.png)
 
@@ -16,10 +16,11 @@ Small project for this event
 ## Example
 
 ```console
+cd ansible
 vagrant up
 vagrant ssh
 sudo su -
-cd /opt/repo/
+cd /opt/repo/ansible
 ansible-playbook -i inventory.ini -l ansible configure_servers.yml
 ```
 ...

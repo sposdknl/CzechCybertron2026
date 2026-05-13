@@ -1,0 +1,57 @@
+---
+- name: Set API token
+  ansible.builtin.set_fact:
+    ansible_zabbix_auth_key: 2b32797b60ce9e5ab0e86d17129b85c3f5bd09866e992f3308cab7b40a8870d9
+
+- name: Import Zabbix templates Trezor from XML
+  vars:
+    ansible_network_os: community.zabbix.zabbix
+    ansible_connection: httpapi
+    ansible_httpapi_port: 443
+    ansible_httpapi_use_ssl: true
+    ansible_httpapi_validate_certs: false
+    ansible_zabbix_url_path: ""
+    ansible_host: "{{ hostvars['zabbix-cylab']['ansible_host'] }}"
+  community.zabbix.zabbix_template:
+    template_xml: "{{ lookup('file', '../zabbix/templates/Trezor/7.0/Template_ModBus_Trezor.xml') }}"
+    state: present
+
+- name: Import Zabbix templates Velin from XML
+  vars:
+    ansible_network_os: community.zabbix.zabbix
+    ansible_connection: httpapi
+    ansible_httpapi_port: 443
+    ansible_httpapi_use_ssl: true
+    ansible_httpapi_validate_certs: false
+    ansible_zabbix_url_path: ""
+    ansible_host: "{{ hostvars['zabbix-cylab']['ansible_host'] }}"
+  community.zabbix.zabbix_template:
+    template_xml: "{{ lookup('file', '../zabbix/templates/Velin/7.0/Template_ModBus_Velin.xml') }}"
+    state: present
+
+- name: Import Zabbix templates Energo rozvodna from XML
+  vars:
+    ansible_network_os: community.zabbix.zabbix
+    ansible_connection: httpapi
+    ansible_httpapi_port: 443
+    ansible_httpapi_use_ssl: true
+    ansible_httpapi_validate_certs: false
+    ansible_zabbix_url_path: ""
+    ansible_host: "{{ hostvars['zabbix-cylab']['ansible_host'] }}"
+  community.zabbix.zabbix_template:
+    template_xml: "{{ lookup('file', '../zabbix/templates/Energo_rozvodna/7.0/Template_ModBus_Energo_rozvodna.xml') }}"
+    state: present
+
+- name: Import Zabbix templates Starlink from XML
+  vars:
+    ansible_network_os: community.zabbix.zabbix
+    ansible_connection: httpapi
+    ansible_httpapi_port: 443
+    ansible_httpapi_use_ssl: true
+    ansible_httpapi_validate_certs: false
+    ansible_zabbix_url_path: ""
+    ansible_host: "{{ hostvars['zabbix-cylab']['ansible_host'] }}"
+  community.zabbix.zabbix_template:
+    template_xml: "{{ lookup('file', '../zabbix/templates/Starlink/6.0/Template_Starlink_dish.xml') }}"
+    state: present
+...

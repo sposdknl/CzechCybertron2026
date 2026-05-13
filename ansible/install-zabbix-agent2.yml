@@ -1,5 +1,5 @@
 ---
-- name: Import Zabbix templates
+- name: Install Zabbix agent2
   ansible.builtin.include_role:
     name: community.zabbix.zabbix_agent
   vars:
@@ -7,7 +7,7 @@
     zabbix_agent2: true
     zabbix_agent_hostname: "ansible"
     zabbix_agent_listenip: "{{ ansible_host }}"
-    zabbix_agent_server: 10.15.15.100
-    zabbix_agent_serveractive: 10.15.15.100
+    zabbix_agent_server: "{{ zabbix-cylab }}"
+    zabbix_agent_serveractive: "{{ zabbix-cylab }}"
     zabbix_agent_host_state: present
 ...

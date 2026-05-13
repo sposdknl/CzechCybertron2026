@@ -17,12 +17,12 @@
   become: true
   tasks:
     - name: Import tasks for installation
-      ansible.builtin.import_tasks: /opt/repo/install-zabbix-agent2.yml
+      ansible.builtin.import_tasks: /opt/repo/ansible/install-zabbix-agent2.yml
 
-#- name: Import Zabbix Cylab Templates
-#  hosts: all
-#  become: true
-#  tasks:
-#    - name: Import template tasks
-#      ansible.builtin.import_tasks: /opt/repo/import-zabbix-templates.yml
+- name: Import Zabbix Cylab Templates
+  hosts: all
+  become: true
+  tasks:
+    - name: Import template tasks
+      ansible.builtin.import_tasks: /opt/repo/ansible/import-zabbix-templates.yml
 ...
