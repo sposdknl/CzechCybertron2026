@@ -1,8 +1,8 @@
-# Zabbix agent a Ansible
+# Zabbix a Ansible
 
-Repository pro vyuku na SPOS DK
+Small project for this event
 
-## První kroky s Ansible a Zabbix agent2
+## První kroky s Ansible a Zabbix agent2 a template
 
 ![Zabbix & Ansible](./images/zbx7-ansible.png)
 
@@ -20,21 +20,6 @@ vagrant up
 vagrant ssh
 sudo su -
 cd /opt/repo/
-ansible-playbook -i inventory.ini -l bastion configure_servers.yml
+ansible-playbook -i inventory.ini -l ansible configure_servers.yml
 ```
-
-# Požadované známkované úkoly
-
-- Zprovozněte si Zabbix Appliance a nastavte druhou síťovou kartu viz /etc/sysconfig/network-scripts/ifcfg-eth1 v AlmaLinux
-- Upravte URL Vašeho Github Classroom projektu v souboru ansible_provision.yml v Tasku "Cloning Git repository" pro klonování do VM  Bastion-ansible
-- Upravte Ansible playbook pro instalaci Zabbix agenta pro instalaci druhé generace Zabbix Agent2 ve verzi 7.0 LTS
-- Upravte Ansible playbook pro instalaci Zabbix agenta, nastavte direktivu HostMetadata ( [dokumetace community.zabbix](https://galaxy.ansible.com/ui/repo/published/community/zabbix/docs/ZABBIX_AGENT_ROLE/) )
-- Provedené změny aktualizujte v ve Vašem git repository (git add; git commit -m "zmeny"; git push)
-- V Zabbix Appliance vytvoř auto-registrační pravidlo v akcích s HostMetadata a dolož sceenem obrazovky
-- Nastartuj připravenou VM Bastion-ansible pomoci Vagrant up - upravte dle svého nastavení síť pro propojení se Zabbix Appliance
-- Přihlaš se do VM Bastion-ansible a spusť ansible playbook v adresáři /opt/repo pro instalaci a konfiguraci Zabbix agenta viz example
-- Vytvoř složku screenshots a config ve svém projektu
-- Do adresáře screenshots udělej snímky s nazvy souboru dokazující pruběh své prace, ansible log, zabbix auto-registrační pravidlo, a registrovaného hosta + průběh funkčního monitorování VM Bastion atd.
-- Do adresáře config vykopiruj konfigurační soubor agenta /etc/zabbix/zabbix_agent2.conf který sestavil Ansible
-
 ...
