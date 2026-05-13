@@ -18,11 +18,11 @@ No specific Zabbix configuration is required.
 
 |Name|Description|Default|
 |----|-----------|-------|
-{$MODBUS_ADDRESS}|<p>-</p>|8191|
-{$MODBUS_COUNT}|<p>-</p>|20|
-{$MODBUS_ENDPOINT}|<p>-</p>|10.15.1.210:502|
-{$MODBUS_FUNCTION}|<p>-</p>|2|
-{$MODBUS_SLAVEID}|<p>-</p>|1|
+{$MODBUS_ADDRESS}|<p>-</p>|0|
+{$MODBUS_COUNT}|<p>-</p>|8|
+{$MODBUS_ENDPOINT}|<p>-</p>|10.15.0.155:502|
+{$MODBUS_FUNCTION}|<p>-</p>|1|
+{$MODBUS_SLAVEID}|<p>-</p>|4|
 {$MODBUS_TYPE}|<p>-</p>|bit|
 
 ## Template links
@@ -39,18 +39,11 @@ There are no template links in this template.
 
 |Group|Name|Description|Type|Key and additional info|
 |-----|----|-----------|----|---------------------|
-|modbus|Velin readings|<p>Read value from PLC by ModeBus</p>|ZABBIX_AGENT2|modbus.get[tcp://{$MODBUS_ENDPOINT},{$MODBUS_SLAVEID},{$MODBUS_FUNCTION},{$MODBUS_ADDRESS},{$MODBUS_COUNT},{$MODBUS_TYPE}]|
-|velin|Light|<p>Light value</p>|DEPENDENT ITEM|zbx.value3|
-|velin|Gen 1|<p>Gen 1 value</p>|DEPENDENT ITEM|zbx.value4|
-|velin|Gen 2|<p>Gen 2 value</p>|DEPENDENT ITEM|zbx.value5|
-|velin|Filling pump up|<p>Filling pump up value</p>|DEPENDENT ITEM|zbx.value6|
-|velin|Filing pump down|<p>Filing pump down value</p>|DEPENDENT ITEM|zbx.value7|
-|velin|Main valve|<p>Main valve value</p>|DEPENDENT ITEM|zbx.value8|
-|velin|Auxiliary pump up|<p>Auxiliary pump up value</p>|DEPENDENT ITEM|zbx.value9|
-|velin|Auxiliary pump down|<p>Auxiliary pump down value</p>|DEPENDENT ITEM|zbx.value10|
-|velin|Safety|<p>Safety value</p>|DEPENDENT ITEM|zbx.value11|
-|velin|WL Error|<p>WL Error value</p>|DEPENDENT ITEM|zbx.value12|
-|velin|WL Bypass|<p>WL Bypass  value</p>|DEPENDENT ITEM|zbx.value13|
+|modbus|Energo rozvodna readings|<p>Read value from PLC by ModeBus</p>|ZABBIX_AGENT2|modbus.get[tcp://{$MODBUS_ENDPOINT},{$MODBUS_SLAVEID},{$MODBUS_FUNCTION},{$MODBUS_ADDRESS},{$MODBUS_COUNT},{$MODBUS_TYPE}]|
+|energo-rozvodna|Grid IN|<p>Grid IN</p>|DEPENDENT ITEM|zbx.value0|
+|energo-rozvodna|Elegen 1|<p>Elegen 1</p>|DEPENDENT ITEM|zbx.value1|
+|energo-rozvodna|Elegen 2|<p>Elegen 2</p>|DEPENDENT ITEM|zbx.value2|
+|energo-rozvodna|Grid OUT|<p>Grid OUT</p>|DEPENDENT ITEM|zbx.value3|
 
 ## Feedback
 
