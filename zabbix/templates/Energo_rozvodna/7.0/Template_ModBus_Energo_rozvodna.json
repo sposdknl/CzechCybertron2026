@@ -1,0 +1,368 @@
+{
+    "zabbix_export": {
+        "version": "7.0",
+        "template_groups": [
+            {
+                "uuid": "9568b5b21c31459c9d4881bf60060fc7",
+                "name": "Templates/CyLab"
+            }
+        ],
+        "templates": [
+            {
+                "uuid": "b884d9af1a9843668dfcf25558172da3",
+                "template": "Template ModBus Energo rozvodna",
+                "name": "Template ModBus Energo rozvodna",
+                "description": "Template for Energo rozvodna - CyLab",
+                "vendor": {
+                    "name": "Open-Tech",
+                    "version": "7.0-0"
+                },
+                "groups": [
+                    {
+                        "name": "Templates/CyLab"
+                    }
+                ],
+                "items": [
+                    {
+                        "uuid": "71100455206b4b6a958b0539e81aaad8",
+                        "name": "Energo rozvodna readings",
+                        "key": "modbus.get[tcp://{$MODBUS_ENDPOINT},{$MODBUS_SLAVEID},{$MODBUS_FUNCTION},{$MODBUS_ADDRESS},{$MODBUS_COUNT},{$MODBUS_TYPE}]",
+                        "delay": "5s",
+                        "history": "7d",
+                        "value_type": "TEXT",
+                        "trends": "0",
+                        "tags": [
+                            {
+                                "tag": "target",
+                                "value": "modbus"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "698d284330d14c1ba7e425102d970781",
+                                "expression": "nodata(/Template ModBus Energo rozvodna/modbus.get[tcp://{$MODBUS_ENDPOINT},{$MODBUS_SLAVEID},{$MODBUS_FUNCTION},{$MODBUS_ADDRESS},{$MODBUS_COUNT},{$MODBUS_TYPE}],5m)=1",
+                                "name": "PLC does not send data",
+                                "priority": "HIGH",
+                                "description": "PLC device not provide data",
+                                "manual_close": "YES",
+                                "tags": [
+                                    {
+                                        "tag": "target",
+                                        "value": "plc"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "b06dba2f3c034b589c82cc9bf58818df",
+                        "name": "Grid IN",
+                        "type": "DEPENDENT",
+                        "key": "zbx.value0",
+                        "delay": "0",
+                        "valuemap": {
+                            "name": "StatusOO"
+                        },
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$[0]"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "modbus.get[tcp://{$MODBUS_ENDPOINT},{$MODBUS_SLAVEID},{$MODBUS_FUNCTION},{$MODBUS_ADDRESS},{$MODBUS_COUNT},{$MODBUS_TYPE}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "target",
+                                "value": "energo-rozvodna"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "27c46fb1ff03466bb48f54e235f8723b",
+                        "name": "Elegen 1",
+                        "type": "DEPENDENT",
+                        "key": "zbx.value1",
+                        "delay": "0",
+                        "valuemap": {
+                            "name": "StatusOO"
+                        },
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$[1]"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "modbus.get[tcp://{$MODBUS_ENDPOINT},{$MODBUS_SLAVEID},{$MODBUS_FUNCTION},{$MODBUS_ADDRESS},{$MODBUS_COUNT},{$MODBUS_TYPE}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "target",
+                                "value": "energo-rozvodna"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "fb324828a8d5435aa1c76071930946b2",
+                        "name": "Elegen 2",
+                        "type": "DEPENDENT",
+                        "key": "zbx.value2",
+                        "delay": "0",
+                        "valuemap": {
+                            "name": "StatusOO"
+                        },
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$[2]"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "modbus.get[tcp://{$MODBUS_ENDPOINT},{$MODBUS_SLAVEID},{$MODBUS_FUNCTION},{$MODBUS_ADDRESS},{$MODBUS_COUNT},{$MODBUS_TYPE}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "target",
+                                "value": "energo-rozvodna"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "2c6148c293674555b391b9f06d199bee",
+                        "name": "Grid OUT",
+                        "type": "DEPENDENT",
+                        "key": "zbx.value3",
+                        "delay": "0",
+                        "valuemap": {
+                            "name": "StatusOO"
+                        },
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$[3]"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "modbus.get[tcp://{$MODBUS_ENDPOINT},{$MODBUS_SLAVEID},{$MODBUS_FUNCTION},{$MODBUS_ADDRESS},{$MODBUS_COUNT},{$MODBUS_TYPE}]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "target",
+                                "value": "energo-rozvodna"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    {
+                        "tag": "target",
+                        "value": "cylab"
+                    }
+                ],
+                "macros": [
+                    {
+                        "macro": "{$MODBUS_ADDRESS}",
+                        "value": "0"
+                    },
+                    {
+                        "macro": "{$MODBUS_COUNT}",
+                        "value": "8"
+                    },
+                    {
+                        "macro": "{$MODBUS_ENDPOINT}",
+                        "value": "10.15.0.155:502"
+                    },
+                    {
+                        "macro": "{$MODBUS_FUNCTION}",
+                        "value": "1"
+                    },
+                    {
+                        "macro": "{$MODBUS_SLAVEID}",
+                        "value": "4"
+                    },
+                    {
+                        "macro": "{$MODBUS_TYPE}",
+                        "value": "bit"
+                    }
+                ],
+                "dashboards": [
+                    {
+                        "uuid": "425e93af9f1d48119f11bbf782d67b1c",
+                        "name": "Energo rozvodna status",
+                        "pages": [
+                            {
+                                "name": "Status",
+                                "widgets": [
+                                    {
+                                        "type": "graph",
+                                        "width": "72",
+                                        "height": "11",
+                                        "fields": [
+                                            {
+                                                "type": "GRAPH",
+                                                "name": "graphid.0",
+                                                "value": {
+                                                    "host": "Template ModBus Energo rozvodna",
+                                                    "name": "Energo rozvodna status Graph"
+                                                }
+                                            },
+                                            {
+                                                "type": "STRING",
+                                                "name": "reference",
+                                                "value": "CGAUX"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Honeycomb",
+                                "widgets": [
+                                    {
+                                        "type": "honeycomb",
+                                        "width": "72",
+                                        "height": "11",
+                                        "fields": [
+                                            {
+                                                "type": "STRING",
+                                                "name": "items.0",
+                                                "value": "Elegen 1"
+                                            },
+                                            {
+                                                "type": "STRING",
+                                                "name": "items.1",
+                                                "value": "Elegen 2"
+                                            },
+                                            {
+                                                "type": "STRING",
+                                                "name": "items.2",
+                                                "value": "Grid IN"
+                                            },
+                                            {
+                                                "type": "STRING",
+                                                "name": "items.3",
+                                                "value": "Grid OUT"
+                                            },
+                                            {
+                                                "type": "STRING",
+                                                "name": "reference",
+                                                "value": "UDDYI"
+                                            },
+                                            {
+                                                "type": "STRING",
+                                                "name": "thresholds.0.color",
+                                                "value": "891515"
+                                            },
+                                            {
+                                                "type": "STRING",
+                                                "name": "thresholds.0.threshold",
+                                                "value": "0"
+                                            },
+                                            {
+                                                "type": "STRING",
+                                                "name": "thresholds.1.color",
+                                                "value": "1B5E20"
+                                            },
+                                            {
+                                                "type": "STRING",
+                                                "name": "thresholds.1.threshold",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "valuemaps": [
+                    {
+                        "uuid": "a0dd90c7857d4ba1a5f971351d4ce2b1",
+                        "name": "StatusOO",
+                        "mappings": [
+                            {
+                                "value": "0",
+                                "newvalue": "Off"
+                            },
+                            {
+                                "value": "1",
+                                "newvalue": "On"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "c268c412194e4444bfcf0c0aa2f62f03",
+                        "name": "StatusUD",
+                        "mappings": [
+                            {
+                                "value": "0",
+                                "newvalue": "Down"
+                            },
+                            {
+                                "value": "1",
+                                "newvalue": "Up"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "graphs": [
+            {
+                "uuid": "cc63dd29b3f2457fbf47ecfccc19a20d",
+                "name": "Energo rozvodna status Graph",
+                "graph_items": [
+                    {
+                        "drawtype": "BOLD_LINE",
+                        "color": "FF0000",
+                        "calc_fnc": "ALL",
+                        "item": {
+                            "host": "Template ModBus Energo rozvodna",
+                            "key": "zbx.value0"
+                        }
+                    },
+                    {
+                        "sortorder": "1",
+                        "drawtype": "BOLD_LINE",
+                        "color": "388E3C",
+                        "calc_fnc": "ALL",
+                        "item": {
+                            "host": "Template ModBus Energo rozvodna",
+                            "key": "zbx.value3"
+                        }
+                    },
+                    {
+                        "sortorder": "2",
+                        "drawtype": "BOLD_LINE",
+                        "color": "FFFF00",
+                        "calc_fnc": "ALL",
+                        "item": {
+                            "host": "Template ModBus Energo rozvodna",
+                            "key": "zbx.value1"
+                        }
+                    },
+                    {
+                        "sortorder": "3",
+                        "drawtype": "BOLD_LINE",
+                        "color": "4000FF",
+                        "calc_fnc": "ALL",
+                        "item": {
+                            "host": "Template ModBus Energo rozvodna",
+                            "key": "zbx.value2"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

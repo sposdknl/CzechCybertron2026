@@ -1,2 +1,2 @@
-# CzechCybertron2025
+# CzechCybertron2026
 Repository for Czech Cybertron

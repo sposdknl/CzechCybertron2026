@@ -1,4 +1,4 @@
-# Zabbix server for Czech Cybertron 2025
+# Zabbix server for Czech Cybertron 2026
 
 Small project for this event
 
@@ -6,5 +6,6 @@ Small project for this event
 
 - Velin
 - Trezor
+- Energo rozvodna
 
 ...

@@ -1,4 +1,4 @@
-# Zabbix server for Czech Cybertron 2025
+# Zabbix server for Czech Cybertron 2026
 
 Small project for this event
 
@@ -8,5 +8,6 @@ Small project for this event
 - [Zabbix](https://www.zabbix.com) server 7.0 LTS
 - Database [PostgreSQL](https://www.postgresql.org) 17
 - [Sellenium](https://www.selenium.dev) Grid
+- [Docker](https://www.docker.com/) engine
 
 ...
