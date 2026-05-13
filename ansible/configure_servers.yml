@@ -1,0 +1,28 @@
+---
+- name: Configure managed nodes
+  hosts: ansible
+  become: true
+  tasks:
+    - name: Update and install Git
+      ansible.builtin.apt:
+        update_cache: true
+        name:
+          - git
+          - net-tools
+          - joe
+          - mc
+
+- name: Install Zabbix agent2
+  hosts: all
+  become: true
+  tasks:
+    - name: Import tasks for installation
+      ansible.builtin.import_tasks: /opt/repo/install-zabbix-agent2.yml
+
+#- name: Import Zabbix Cylab Templates
+#  hosts: all
+#  become: true
+#  tasks:
+#    - name: Import template tasks
+#      ansible.builtin.import_tasks: /opt/repo/import-zabbix-templates.yml
+...
