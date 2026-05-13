@@ -19,6 +19,9 @@ https://github.com/sparky8512/starlink-grpc-tools
 
 Run Starlink exporter:
 python dish_grpc_prometheus.py status alert_detail</description>
+            <vendor>
+                <name>Open-Tech</name>
+                <version>6.0-0</version>
             <groups>
                 <group>
                     <name>Templates</name>
